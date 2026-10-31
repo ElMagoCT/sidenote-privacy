@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sidenote privacy policy</title>
-<meta name="description" content="Sidenote stores your notes in your browser and nowhere else. It collects nothing.">
+<meta name="description" content="Sidenote stores your notes in your browser. Optional sync and sharing send them encrypted, so the sync service cannot read them.">
 <link rel="icon" href="favicon.png">
 <style>
   :root { --bg: #f2f1ed; --card: #fff; --fg: #1d1d22; --fg2: #5c5c66; --line: rgba(0,0,0,.08); --accent: #3d8bd9; }
@@ -33,11 +33,11 @@
     <img src="icon.png" alt="">
     <div>
       <h1>Sidenote privacy policy</h1>
-      <div class="date">Effective October 30, 2026</div>
+      <div class="date">Updated October 30, 2026 · covers version 1.2</div>
     </div>
   </header>
 
-  <p class="lead">Sidenote does not collect, transmit, sell or share any of your data. Your notes and settings are stored in your own browser and never leave it.</p>
+  <p class="lead">Your notes live in your own browser. Nothing leaves it unless you turn on sync or share a notepad, and even then your notes are encrypted on your device first, so the sync service cannot read them. Sidenote has no accounts, no analytics and no ads, and sells or shares nothing.</p>
 
   <h2>What Sidenote stores</h2>
   <p>Sidenote is a Chrome extension for writing notes in the side panel. It stores two things, both on your device:</p>
@@ -45,13 +45,24 @@
     <li><strong>Your notepads and settings</strong>, in <code>chrome.storage.local</code>. This is local browser storage. Chrome does not sync it to your Google account or anywhere else.</li>
     <li><strong>Which notepad each tab is showing</strong>, in <code>chrome.storage.session</code>. Chrome clears this when the browser closes.</li>
   </ul>
-  <p>Sidenote has no accounts, no servers, no analytics, no advertising and no third-party code. It makes no network requests of its own.</p>
+  <p>With sync and sharing off (the default), Sidenote makes no network requests of its own. It has no accounts, no analytics, no advertising and no third-party code.</p>
+
+  <h2>Sync and sharing (optional)</h2>
+  <p>You can turn on sync in the full view's settings, under Sync &amp; devices, or share a single notepad with Copy share key in its menu. Both work with keys instead of accounts:</p>
+  <ul>
+    <li><strong>A sync key</strong> links your own computers. <strong>A share key</strong> gives someone access to one notepad and its subpads. Keys are made at random on your device. Anyone who has a key can read and edit what it covers, so treat keys like passwords.</li>
+    <li><strong>What is sent.</strong> The notepads covered by your keys (title, text, colour and place in your list) and, with sync on, a small index of which notepads you have, which you starred or archived, their order and your look settings. All of it is encrypted on your device with AES-256-GCM, using a key derived from your Sidenote key, before it is sent.</li>
+    <li><strong>What the service sees.</strong> The sync service at <code>sidenote-sync.netlify.app</code>, run by the developer on Netlify, stores the encrypted data under an identifier that is a one-way hash of your key, with a revision number and a time. Your keys themselves never leave your device, so the service cannot decrypt anything. Like any website, Netlify keeps standard request logs, which include IP addresses, under <a href="https://www.netlify.com/privacy/">Netlify's privacy policy</a>.</li>
+    <li><strong>What it is used for.</strong> Only to keep your notepads in step between your devices and the people you shared them with. It is never read, analysed, sold or used for anything else.</li>
+    <li><strong>Deleting.</strong> Deleting a notepad you made replaces its stored copy with an encrypted deletion marker on the next sync, which removes it from every device that has it. Removing a notepad someone shared with you only removes your copy. Turning sync off on a device stops it syncing and deletes nothing.</li>
+  </ul>
 
   <h2>Permissions and why they are needed</h2>
   <ul>
     <li><strong>Side panel</strong> shows your notepad in Chrome's side panel, only on the tab where you open it.</li>
     <li><strong>Storage</strong> saves your notepads and settings in your browser, as described above.</li>
     <li><strong>Tabs</strong> is used in two cases. When you choose "Link this page", Sidenote reads the current tab's address and title and puts a link to it in your note. When you open the full view, Sidenote looks for an existing Sidenote tab so it can switch to it instead of opening a second one. Sidenote does not record or keep your browsing history.</li>
+    <li><strong>Scripting and access to web pages</strong> are optional and off by default. If you turn on the page shortcut in Settings, Chrome asks for permission to run a small script on web pages. It only watches for the key combination you chose and tells Sidenote to open; it does not read or send anything from the page. Turning it off removes the permission.</li>
   </ul>
 
   <h2>Links you open</h2>
@@ -61,6 +72,7 @@
   <ul>
     <li><strong>Export</strong> all notepads as a JSON file from the settings sheet in the full view. The file is saved to your computer.</li>
     <li><strong>Delete</strong> any notepad from its menu.</li>
+    <li><strong>Turn sync off</strong> on any device from Settings → Sync &amp; devices.</li>
     <li><strong>Uninstall</strong> the extension and Chrome deletes everything Sidenote stored.</li>
   </ul>
 
@@ -68,7 +80,7 @@
   <p>Sidenote collects no personal information from anyone, including children.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes, the new version will be posted on this page with a new effective date. A change that adds any data collection would also be announced in the extension's Chrome Web Store listing before it ships.</p>
+  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above; it is announced in the extension's Chrome Web Store listing.</p>
 
   <h2>Contact</h2>
   <p>Questions about this policy can be sent through the support link on Sidenote's Chrome Web Store page, or as an <a href="https://github.com/ElMagoCT/sidenote-privacy/issues">issue on GitHub</a>.</p>
