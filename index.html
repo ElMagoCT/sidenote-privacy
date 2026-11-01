@@ -33,7 +33,7 @@
     <img src="icon.png" alt="">
     <div>
       <h1>Sidenote privacy policy</h1>
-      <div class="date">Updated October 30, 2026 · covers version 1.2</div>
+      <div class="date">Updated October 31, 2026 · covers version 1.5</div>
     </div>
   </header>
 
@@ -50,7 +50,7 @@
   <h2>Sync and sharing (optional)</h2>
   <p>You can turn on sync in the full view's settings, under Sync &amp; devices, or share a single notepad with Copy share key in its menu. Both work with keys instead of accounts:</p>
   <ul>
-    <li><strong>A sync key</strong> links your own computers. <strong>A share key</strong> gives someone access to one notepad and its subpads. Keys are made at random on your device. Anyone who has a key can read and edit what it covers, so treat keys like passwords.</li>
+    <li><strong>A sync key</strong> links your own computers. <strong>A share key</strong> gives someone access to one notepad and its subpads: an edit key lets them change it, a view-only key lets them read it but never change it. Keys are made at random on your device. Anyone who has a key can read and edit what it covers, so treat keys like passwords.</li>
     <li><strong>What is sent.</strong> The notepads covered by your keys (title, text, colour and place in your list) and, with sync on, a small index of which notepads you have, which you starred or archived, their order and your look settings. All of it is encrypted on your device with AES-256-GCM, using a key derived from your Sidenote key, before it is sent.</li>
     <li><strong>What the service sees.</strong> The sync service at <code>sidenote-sync.netlify.app</code>, run by the developer on Netlify, stores the encrypted data under an identifier that is a one-way hash of your key, with a revision number and a time. Your keys themselves never leave your device, so the service cannot decrypt anything. Like any website, Netlify keeps standard request logs, which include IP addresses, under <a href="https://www.netlify.com/privacy/">Netlify's privacy policy</a>.</li>
     <li><strong>What it is used for.</strong> Only to keep your notepads in step between your devices and the people you shared them with. It is never read, analysed, sold or used for anything else.</li>
@@ -62,6 +62,9 @@
     <li><strong>Side panel</strong> shows your notepad in Chrome's side panel, only on the tab where you open it.</li>
     <li><strong>Storage</strong> saves your notepads and settings in your browser, as described above.</li>
     <li><strong>Tabs</strong> is used in two cases. When you choose "Link this page", Sidenote reads the current tab's address and title and puts a link to it in your note. When you open the full view, Sidenote looks for an existing Sidenote tab so it can switch to it instead of opening a second one. Sidenote does not record or keep your browsing history.</li>
+    <li><strong>Alarms</strong> schedules the reminders you write in a note (for example “@tomorrow 9am”), on your computer.</li>
+    <li><strong>Notifications</strong> are optional. Sidenote asks the first time you make a reminder, then shows it at the time you set. Nothing about a reminder is sent anywhere beyond your synced notes.</li>
+    <li><strong>Unlimited storage</strong> lifts Chrome's 10 MB limit on local storage so a large set of notes keeps saving. It does not send anything anywhere.</li>
     <li><strong>Scripting and access to web pages</strong> are optional and off by default. If you turn on the page shortcut in Settings, Chrome asks for permission to run a small script on web pages. It only watches for the key combination you chose and tells Sidenote to open; it does not read or send anything from the page. Turning it off removes the permission.</li>
   </ul>
 
@@ -80,7 +83,7 @@
   <p>Sidenote collects no personal information from anyone, including children.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above; it is announced in the extension's Chrome Web Store listing.</p>
+  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above. Version 1.5 added view-only share keys and reminders (alarms, and notifications if you allow them). Sync keeps no extra copy of your notes on your computer, only small fingerprints of each line, used to merge edits made at the same time.</p>
 
   <h2>Contact</h2>
   <p>Questions about this policy can be sent through the support link on Sidenote's Chrome Web Store page, or as an <a href="https://github.com/ElMagoCT/sidenote-privacy/issues">issue on GitHub</a>.</p>
