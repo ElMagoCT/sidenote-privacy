@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidenote terms of use</title>
+<meta name="description" content="Terms for using Sidenote, its sync service and its AI connector.">
+<link rel="icon" href="favicon.png">
+<style>
+  :root { --bg: #f2f1ed; --card: #fff; --fg: #1d1d22; --fg2: #5c5c66; --line: rgba(0,0,0,.08); --accent: #3d8bd9; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #121216; --card: #1c1c21; --fg: #ececf0; --fg2: #9a9aa6; --line: rgba(255,255,255,.08); } }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  main { max-width: 680px; margin: 0 auto; padding: 64px 16px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+  header img { width: 52px; height: 52px; }
+  h1 { font-size: 28px; line-height: 1.2; font-weight: 600; letter-spacing: -.3px; margin: 0; }
+  .date { color: var(--fg2); font-size: 14px; margin-top: 4px; }
+  .lead { background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 18px 20px; font-size: 17px; margin: 0 0 36px; }
+  h2 { font-size: 18px; font-weight: 600; margin: 36px 0 8px; }
+  p, li { color: var(--fg); }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin: 6px 0; }
+  code { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--line); padding: 1px 5px; border-radius: 4px; }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--fg2); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="">
+    <div>
+      <h1>Sidenote terms of use</h1>
+      <div class="date">Effective November 1, 2026</div>
+    </div>
+  </header>
+
+  <p class="lead">Sidenote is free. These terms cover the Sidenote Chrome extension, its sync service at sidenote-sync.netlify.app and its AI connector (the Sidenote MCP server, local or hosted). By using them you agree to these terms and to the <a href="./">privacy policy</a>.</p>
+
+  <h2>Your notes are yours</h2>
+  <p>You own what you write. Sidenote claims no rights to your notes and only stores or processes them to provide the features you turn on, as the privacy policy describes.</p>
+
+  <h2>Keys</h2>
+  <p>Sidenote uses keys instead of accounts. Anyone with your sync key or a share key can read, and with an edit key change, what it covers, so keep keys private. A lost key cannot be recovered, and nobody can reset it for you.</p>
+
+  <h2>AI assistants</h2>
+  <p>If you connect an AI assistant, it acts on your instructions with the access you gave it (read only, or read and edit). Check what it changes; an assistant can make mistakes. What it reads is sent to that AI provider under their terms. You can disconnect at any time at <a href="https://sidenote-sync.netlify.app/oauth/disconnect">sidenote-sync.netlify.app/oauth/disconnect</a>.</p>
+
+  <h2>Fair use</h2>
+  <ul>
+    <li>Don't use the sync service or connector to store or spread illegal content, malware, or other people's data without permission.</li>
+    <li>Don't try to break, overload or get around the services' limits. Both have daily request limits that keep them free; when a limit is reached they pause until the next day and your notes stay safe on your devices.</li>
+  </ul>
+
+  <h2>No warranty</h2>
+  <p>Sidenote is provided as is, without warranties of any kind. The services may change, pause or stop. Keep your own copies of important notes (Settings → Export saves all of them as a file). To the extent the law allows, the developer is not liable for lost data or other damages from using Sidenote.</p>
+
+  <h2>Changes</h2>
+  <p>If these terms change, the new version will be posted here with a new date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions can be sent through the support link on Sidenote's Chrome Web Store page, or as an issue on <a href="https://github.com/ElMagoCT/sidenote-mcp/issues">GitHub</a>.</p>
+
+  <footer>Sidenote for Chrome</footer>
+</main>
+</body>
+</html>

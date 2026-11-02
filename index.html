@@ -33,11 +33,11 @@
     <img src="icon.png" alt="">
     <div>
       <h1>Sidenote privacy policy</h1>
-      <div class="date">Updated October 31, 2026 · covers version 1.5</div>
+      <div class="date">Updated November 1, 2026 · covers version 1.5 and the AI connector</div>
     </div>
   </header>
 
-  <p class="lead">Your notes live in your own browser. Nothing leaves it unless you turn on sync or share a notepad, and even then your notes are encrypted on your device first, so the sync service cannot read them. Sidenote has no accounts, no analytics and no ads, and sells or shares nothing.</p>
+  <p class="lead">Your notes live in your own browser. Nothing leaves it unless you turn on sync or share a notepad, and even then your notes are encrypted on your device first, so the sync service cannot read them. If you choose to connect an AI assistant to your notes, the section on AI assistants below explains exactly what changes. Sidenote has no accounts, no analytics and no ads, and sells or shares nothing.</p>
 
   <h2>What Sidenote stores</h2>
   <p>Sidenote is a Chrome extension for writing notes in the side panel. It stores two things, both on your device:</p>
@@ -55,6 +55,16 @@
     <li><strong>What the service sees.</strong> The sync service at <code>sidenote-sync.netlify.app</code>, run by the developer on Netlify, stores the encrypted data under an identifier that is a one-way hash of your key, with a revision number and a time. Your keys themselves never leave your device, so the service cannot decrypt anything. Like any website, Netlify keeps standard request logs, which include IP addresses, under <a href="https://www.netlify.com/privacy/">Netlify's privacy policy</a>.</li>
     <li><strong>What it is used for.</strong> Only to keep your notepads in step between your devices and the people you shared them with. It is never read, analysed, sold or used for anything else.</li>
     <li><strong>Deleting.</strong> Deleting a notepad you made replaces its stored copy with an encrypted deletion marker on the next sync, which removes it from every device that has it. Removing a notepad someone shared with you only removes your copy. Turning sync off on a device stops it syncing and deletes nothing.</li>
+  </ul>
+
+  <h2 id="ai">AI assistants (optional)</h2>
+  <p>You can let an AI assistant such as Claude, ChatGPT or Gemini read and edit your synced notepads, using your sync key. It is off unless you set it up, and there are two ways to do it:</p>
+  <ul>
+    <li><strong>On your computer (the local server).</strong> Some apps (Claude Code, Claude Desktop, Gemini CLI, Codex and others) can run the open-source Sidenote server on your own computer. Your sync key is saved in that app's settings or your system keychain, your notes are decrypted on your computer, and the sync service still only ever sees encrypted data.</li>
+    <li><strong>The hosted connector</strong> at <code>sidenote-sync.netlify.app/mcp</code>, for apps that connect by web address (ChatGPT, claude.ai, the Gemini app). When you connect one, you type your sync key into Sidenote's own sign-in page, not into the AI app. The key is then sealed with AES-256-GCM, under a secret only the connector holds, into the sign-in tokens the AI app keeps, so the AI app never sees your key. Each time the assistant uses your notes, the connector opens the token, decrypts the notepads it needs <em>in memory</em>, does what was asked, returns the result, and forgets it. This is the one case where your notes are readable on the server, and only while a request is being answered. The connector stores no keys and no notes. It keeps only a one-way hash of your key with a time if you use Disconnect (below), and a marker that each sign-in code has been used once.</li>
+    <li><strong>What the AI app receives.</strong> Whatever the assistant reads through these tools (titles and text of the notepads it opens or searches) goes to that AI provider, such as OpenAI, Anthropic or Google, and is handled under its privacy policy. Changes the assistant makes are written to your notepads like any other edit.</li>
+    <li><strong>How long access lasts.</strong> A connection's access token lasts an hour and is renewed automatically for up to 180 days. To sign every AI app out, use <a href="https://sidenote-sync.netlify.app/oauth/disconnect">Disconnect AI apps</a>; they stop working within an hour. You can also remove Sidenote in the AI app's settings. Choose “Read only” when connecting if the assistant should never change anything.</li>
+    <li>The connector's code is public at <a href="https://github.com/ElMagoCT/sidenote-mcp">github.com/ElMagoCT/sidenote-mcp</a>. Netlify keeps standard request logs (including IP addresses) for it, as for the sync service.</li>
   </ul>
 
   <h2>Permissions and why they are needed</h2>
@@ -76,6 +86,7 @@
     <li><strong>Export</strong> all notepads as a JSON file from the settings sheet in the full view. The file is saved to your computer.</li>
     <li><strong>Delete</strong> any notepad from its menu.</li>
     <li><strong>Turn sync off</strong> on any device from Settings → Sync &amp; devices.</li>
+    <li><strong>Disconnect AI assistants</strong> at <a href="https://sidenote-sync.netlify.app/oauth/disconnect">sidenote-sync.netlify.app/oauth/disconnect</a>, or remove Sidenote from the AI app.</li>
     <li><strong>Uninstall</strong> the extension and Chrome deletes everything Sidenote stored.</li>
   </ul>
 
@@ -83,10 +94,10 @@
   <p>Sidenote collects no personal information from anyone, including children.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above. Version 1.5 added view-only share keys and reminders (alarms, and notifications if you allow them). Sync keeps no extra copy of your notes on your computer, only small fingerprints of each line, used to merge edits made at the same time.</p>
+  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above. Version 1.5 added view-only share keys and reminders (alarms, and notifications if you allow them). Sync keeps no extra copy of your notes on your computer, only small fingerprints of each line, used to merge edits made at the same time. November 2026 added the optional AI assistant connections described above.</p>
 
   <h2>Contact</h2>
-  <p>Questions about this policy can be sent through the support link on Sidenote's Chrome Web Store page, or as an <a href="https://github.com/ElMagoCT/sidenote-privacy/issues">issue on GitHub</a>.</p>
+  <p>Questions about this policy can be sent through the support link on Sidenote's Chrome Web Store page, or as an <a href="https://github.com/ElMagoCT/sidenote-privacy/issues">issue on GitHub</a>. For the AI connector, use <a href="https://github.com/ElMagoCT/sidenote-mcp/issues">its GitHub issues</a>. See also the <a href="terms.html">terms of use</a>.</p>
 
   <footer>Sidenote for Chrome</footer>
 </main>
