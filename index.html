@@ -33,28 +33,29 @@
     <img src="icon.png" alt="">
     <div>
       <h1>Sidenote privacy policy</h1>
-      <div class="date">Updated November 4, 2026 · covers version 1.6 and AI access</div>
+      <div class="date">Updated November 7, 2026 · covers version 1.7 and AI access</div>
     </div>
   </header>
 
   <p class="lead">Your notes live in your own browser. Nothing leaves it unless you turn on sync or share a notepad, and even then your notes are encrypted on your device first, so the sync service cannot read them. If you choose to connect an AI assistant to your notes, the section on AI assistants below explains exactly what changes. Sidenote has no accounts, no analytics and no ads, and sells or shares nothing.</p>
 
   <h2>What Sidenote stores</h2>
-  <p>Sidenote is a Chrome extension for writing notes in the side panel. It stores two things, both on your device:</p>
+  <p>Sidenote is a Chrome extension for writing notes in the side panel. It stores these things, all on your device:</p>
   <ul>
     <li><strong>Your notepads and settings</strong>, in <code>chrome.storage.local</code>. This is local browser storage. Chrome does not sync it to your Google account or anywhere else.</li>
+    <li><strong>Images you add to notes</strong>, in the extension's IndexedDB storage, after Sidenote shrinks them on your computer. Chrome does not sync this either.</li>
     <li><strong>Which notepad each tab is showing</strong>, in <code>chrome.storage.session</code>. Chrome clears this when the browser closes.</li>
   </ul>
-  <p>With sync and sharing off (the default), Sidenote makes no network requests of its own. It has no accounts, no analytics, no advertising and no third-party code.</p>
+  <p>With sync and sharing off (the default), Sidenote makes no network requests of its own, with one exception you choose: a YouTube video or a Google Drive, Docs, Sheets, Slides or Forms file you put in a note loads from Google while the note is open, as it would on any web page, under Google's privacy policy. YouTube videos load through a small page on <code>sidenote-sync.netlify.app</code>, because YouTube won't play inside an extension otherwise. The video's address goes in the part of that page's address after “#”, which browsers never send, so the page learns nothing about what you watch. Sidenote has no accounts, no analytics, no advertising and no third-party code.</p>
 
   <h2>Sync and sharing (optional)</h2>
   <p>You can turn on sync in the full view's settings, under Sync &amp; devices, or share a single notepad with Copy share key in its menu. Both work with keys instead of accounts:</p>
   <ul>
     <li><strong>A sync key</strong> links your own computers. <strong>A share key</strong> gives someone access to one notepad and its subpads: an edit key lets them change it, a view-only key lets them read it but never change it. Keys are made at random on your device. Anyone who has a key can read and edit what it covers, so treat keys like passwords.</li>
-    <li><strong>What is sent.</strong> The notepads covered by your keys (title, text, colour and place in your list) and, with sync on, a small index of which notepads you have, which you starred or archived, their order and your look settings. All of it is encrypted on your device with AES-256-GCM, using a key derived from your Sidenote key, before it is sent.</li>
+    <li><strong>What is sent.</strong> The notepads covered by your keys (title, text, colour and place in your list) and, with sync on, a small index of which notepads you have, which you starred or archived, their order and your look settings. All of it is encrypted on your device with AES-256-GCM, using a key derived from your Sidenote key, before it is sent. Images in those notepads go up once each, encrypted the same way with a key of their own that is written inside the note, so whoever can read the note can see its images.</li>
     <li><strong>What the service sees.</strong> The sync service at <code>sidenote-sync.netlify.app</code>, run by the developer on Netlify, stores the encrypted data under an identifier that is a one-way hash of your key, with a revision number and a time. Your keys themselves never leave your device, so the service cannot decrypt anything. Like any website, Netlify keeps standard request logs, which include IP addresses, under <a href="https://www.netlify.com/privacy/">Netlify's privacy policy</a>.</li>
     <li><strong>What it is used for.</strong> Only to keep your notepads in step between your devices and the people you shared them with. It is never read, analysed, sold or used for anything else.</li>
-    <li><strong>Deleting.</strong> Deleting a notepad you made replaces its stored copy with an encrypted deletion marker on the next sync, which removes it from every device that has it. Removing a notepad someone shared with you only removes your copy. Turning sync off on a device stops it syncing and deletes nothing.</li>
+    <li><strong>Deleting.</strong> Deleting a notepad you made replaces its stored copy with an encrypted deletion marker on the next sync, which removes it from every device that has it. Removing a notepad someone shared with you only removes your copy. Turning sync off on a device stops it syncing and deletes nothing. An image you remove from a note stays on the service, encrypted; without a note that holds its key it can't be found or read.</li>
   </ul>
 
   <h2 id="ai">AI assistants (optional)</h2>
@@ -65,7 +66,7 @@
     <li><strong>Sidenote on the web</strong> at <a href="https://sidenote-sync.netlify.app/notes/">sidenote-sync.netlify.app/notes</a>. You open your notes there with your sync key, or a shared notepad with its key, and they are decrypted in your browser tab, like in the extension. Edits are encrypted there before they are saved. The key is kept in the page's address after “#”, a part browsers never send to a server, so you can bookmark the page; that also puts the key in your browser history and bookmarks, so anyone who can use your browser, or who gets the address, can open those notes. The page remembers which notepad you had open (in this browser only), never the key itself.</li>
     <li><strong>Links for chat apps.</strong> If you choose “Link for chat apps” on that page, or “Copy a link for chat apps” in Sidenote’s settings under Sync &amp; devices, your sync key is sent to the connector once and sealed with AES-256-GCM, under a secret only the connector holds, into a read-only link. The key itself never appears in the link. When a chat app opens the link, the connector decrypts your notepads <em>in memory</em>, returns them as text and forgets them. It stores no keys and no notes. Anyone who has the link can read your notepads (not change them) until you turn links off (below). Links ask search engines not to index them.</li>
     <li><strong>The sidenote command-line tool</strong> (<code>sidenote.mjs</code>), for assistants that can run commands on your computer. It works like the local server: your key is kept on your computer (in your user folder if you save it), and notes are decrypted there.</li>
-    <li><strong>What the AI app receives.</strong> Whatever the assistant reads through these tools (titles and text of the notepads it opens or searches) goes to that AI provider, such as OpenAI, Anthropic or Google, and is handled under its privacy policy. Changes the assistant makes are written to your notepads like any other edit.</li>
+    <li><strong>What the AI app receives.</strong> Whatever the assistant reads through these tools (titles and text of the notepads it opens or searches, and images it asks to see) goes to that AI provider, such as OpenAI, Anthropic or Google, and is handled under its privacy policy. Changes the assistant makes are written to your notepads like any other edit. When an assistant adds an image from a web address, the connector or the command-line tool downloads it from that address and stores it encrypted like any other image.</li>
     <li><strong>How long access lasts.</strong> A connection's access token lasts an hour and is renewed automatically for up to 180 days. To turn off every link you made and sign every AI app out, use <a href="https://sidenote-sync.netlify.app/oauth/disconnect">Turn off AI access</a>: links stop at once, apps within an hour. You can also remove Sidenote in the AI app's settings. Choose “Read only” when connecting if the assistant should never change anything.</li>
     <li>The connector's code is public at <a href="https://github.com/ElMagoCT/sidenote-mcp">github.com/ElMagoCT/sidenote-mcp</a>. Netlify keeps standard request logs (including IP addresses) for it, as for the sync service.</li>
   </ul>
@@ -97,7 +98,7 @@
   <p>Sidenote collects no personal information from anyone, including children.</p>
 
   <h2>Changes</h2>
-  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above. Version 1.5 added view-only share keys and reminders (alarms, and notifications if you allow them). Sync keeps no extra copy of your notes on your computer, only small fingerprints of each line, used to merge edits made at the same time. November 2026 added the optional AI assistant connections described above, then the Sidenote for AI page, read-only links for chat apps, the command-line tool and Sidenote on the web.</p>
+  <p>If this policy changes, the new version will be posted on this page with a new date. Version 1.2 added the optional, encrypted sync and sharing described above. Version 1.5 added view-only share keys and reminders (alarms, and notifications if you allow them). Sync keeps no extra copy of your notes on your computer, only small fingerprints of each line, used to merge edits made at the same time. November 2026 added the optional AI assistant connections described above, then the Sidenote for AI page, read-only links for chat apps, the command-line tool and Sidenote on the web. Version 1.7 added images (shrunk on your computer, encrypted like notes when synced), YouTube and Google file embeds, and whiteboards.</p>
 
   <h2>Contact</h2>
   <p>Questions about this policy can be sent through the support link on Sidenote's Chrome Web Store page, or as an <a href="https://github.com/ElMagoCT/sidenote-privacy/issues">issue on GitHub</a>. For the AI connector, use <a href="https://github.com/ElMagoCT/sidenote-mcp/issues">its GitHub issues</a>. See also the <a href="terms.html">terms of use</a>.</p>
